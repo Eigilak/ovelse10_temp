@@ -58,3 +58,48 @@ import * as LocalAuthentication from 'expo-local-authentication';
     cancelBiometricLogin = () => {
         LocalAuthentication.cancelAuthenticate();
     };
+    
+    
+    
+    
+    
+    
+    // skal ind i render funktionen
+    if(!this.state.isLoggedInBiometic){
+            const {
+                hasBiometricData,
+                hasBiometricHardware,
+                isRequestingBiometricLogin,
+            } = this.state;
+            return (
+                <View style={styles.container}>
+                    <Text style={styles.paragraph}>
+                        Login ind med biometrics!
+                    </Text>
+                    {/*   Vi viser knappen hvis brugerens device understøtter biometrics
+         */}
+                    {hasBiometricData && hasBiometricHardware && (
+                        <Button
+                            title="Biometric login"
+                            onPress={this.requestBiometricLogin}
+                        />
+                    )}
+                    {/*   På Android viser vi denne besked når brugeren skal scanne sin finger
+         */}
+                    {isRequestingBiometricLogin && Platform.OS === 'android' && (
+                        <View>
+                            <Text>Put your finger on fingerprint scanner now.</Text>
+                            <Button title="Cancel" onPress={this.cancelBiometricLogin} />
+                        </View>
+                    )}
+                </View>
+            );
+        }else {
+            return (
+                <View style={styles.container}>
+                    <Text style={styles.paragraph}>
+                        Du er logget ind med biometrics!!
+                    </Text>
+                </View>
+            )
+        }
