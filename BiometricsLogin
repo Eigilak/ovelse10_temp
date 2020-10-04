@@ -11,9 +11,6 @@ import * as LocalAuthentication from 'expo-local-authentication';
 //Vigtige funktioner
 
 // Vi checker om det er muligt at bruge biometrics
-    componentDidMount = () => {
-        this.checkBiometricAvailability();
-    };
 
     checkBiometricAvailability = async () => {
         const hasBiometricHardware = await LocalAuthentication.hasHardwareAsync();
