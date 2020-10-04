@@ -1,7 +1,6 @@
 //vigtige imports
 import * as React from 'react';
 import { Text, View, StyleSheet, Alert, Button, Platform } from 'react-native';
-import Constants from 'expo-constants';
 import * as LocalAuthentication from 'expo-local-authentication';
 
 
